@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>句子练习 · Unit 1</title>
+<title>句子练习 · 六年级英语</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   body {
@@ -24,20 +24,48 @@
   .hidden { display: none !important; }
 
   /* 开始页 */
-  .start-page { display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1; text-align:center; padding:30px 10px; }
+  .start-page { display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1; text-align:center; padding:20px 10px; }
   .game-title { font-size:36px; font-weight:900;
     background: linear-gradient(135deg, #ff7eb0, #c17cf5, #6db6f0);
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     letter-spacing:2px; margin-bottom:8px; }
-  .game-sub { font-size:15px; color:#8a6aaa; letter-spacing:1px; margin-bottom:12px; }
-  .unit-badge { display:inline-block;
-    background: linear-gradient(135deg, #b47cff, #8b5cf6); color:#fff;
-    padding:8px 26px; border-radius:22px; font-size:16px; font-weight:800;
-    letter-spacing:1px; margin-bottom:26px;
-    box-shadow: 0 10px 22px -10px rgba(139,92,246,0.7); }
+  .game-sub { font-size:15px; color:#8a6aaa; letter-spacing:1px; margin-bottom:20px; }
+
+  .unit-label { font-size:13px; font-weight:700; color:#8a6aaa; letter-spacing:3px; margin-bottom:12px; }
+  .unit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 460px;
+    margin-bottom: 24px;
+  }
+  .unit-btn {
+    background: rgba(255,255,255,0.92);
+    border: 2px solid transparent;
+    border-radius: 16px;
+    padding: 16px 8px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #4a2c6b;
+    cursor: pointer;
+    transition: all 0.18s;
+    box-shadow: 0 6px 16px -8px rgba(150,90,180,0.2);
+    line-height: 1.3;
+  }
+  .unit-btn:hover { transform: translateY(-3px); }
+  .unit-btn:active { transform: scale(0.96); }
+  .unit-btn .count { display: block; font-size: 11px; font-weight: 400; color: #aa99bb; margin-top: 3px; }
+  .unit-btn.active {
+    background: linear-gradient(135deg, #b47cff, #8b5cf6);
+    color: #fff;
+    box-shadow: 0 10px 22px -8px rgba(139,92,246,0.7);
+  }
+  .unit-btn.active .count { color: rgba(255,255,255,0.9); }
+
   .start-rules { background: rgba(255,255,255,0.7); border-radius:18px;
-    padding:18px 22px; text-align:left; font-size:14px; color:#555;
-    line-height:2; margin-bottom:26px; max-width:420px; }
+    padding:16px 20px; text-align:left; font-size:13px; color:#555;
+    line-height:1.9; margin-bottom:24px; max-width:420px; }
   .start-rules b { color:#4a2c6b; }
   .start-btn { background: linear-gradient(135deg, #b47cff, #8b5cf6);
     color:#fff; border:none; padding:18px 60px; border-radius:20px;
@@ -190,6 +218,8 @@
     .opt { font-size:15px; padding:14px 8px; min-height:56px; }
     .opt .key { font-size:11px; padding:1px 5px; }
     .result-grade { font-size:80px; }
+    .unit-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .unit-btn { padding: 12px 4px; font-size: 13px; }
   }
 </style>
 </head>
@@ -201,7 +231,12 @@
   <div id="startPage" class="start-page">
     <div class="game-title">✏️ 句子练习</div>
     <div class="game-sub">看句子 · 选对词 · 学语法</div>
-    <div class="unit-badge">Unit 1</div>
+
+    <div class="unit-label">选择单元</div>
+    <div class="unit-grid" id="unitGrid">
+      <!-- 由 JS 动态生成 -->
+    </div>
+
     <div class="start-rules">
       🎯 共 <b>10 道题</b>，总时长 <b>60 秒</b><br>
       ✅ 答对：自动跳下一题<br>
@@ -278,6 +313,38 @@
    ============================================================ */
 const TOTAL_TIME = 60;
 const QUESTIONS_PER_ROUND = 10;
+
+/* ============================================================
+   单元选择（自动检测 data.js 中存在的单元）
+   ============================================================ */
+const UNITS = [];
+if (typeof UNIT1_QUESTIONS !== 'undefined') UNITS.push({ id: 'unit1', name: 'Unit 1', data: UNIT1_QUESTIONS });
+if (typeof UNIT2_QUESTIONS !== 'undefined') UNITS.push({ id: 'unit2', name: 'Unit 2', data: UNIT2_QUESTIONS });
+if (typeof UNIT3_QUESTIONS !== 'undefined') UNITS.push({ id: 'unit3', name: 'Unit 3', data: UNIT3_QUESTIONS });
+if (typeof UNIT4_QUESTIONS !== 'undefined') UNITS.push({ id: 'unit4', name: 'Unit 4', data: UNIT4_QUESTIONS });
+if (typeof UNIT5_QUESTIONS !== 'undefined') UNITS.push({ id: 'unit5', name: 'Unit 5', data: UNIT5_QUESTIONS });
+if (typeof UNIT6_QUESTIONS !== 'undefined') UNITS.push({ id: 'unit6', name: 'Unit 6', data: UNIT6_QUESTIONS });
+
+let selectedUnitId = UNITS.length > 0 ? UNITS[0].id : null;
+
+/* ============================================================
+   渲染单元按钮
+   ============================================================ */
+function renderUnitButtons() {
+  const grid = document.getElementById('unitGrid');
+  grid.innerHTML = '';
+  UNITS.forEach(u => {
+    const btn = document.createElement('button');
+    btn.className = 'unit-btn' + (u.id === selectedUnitId ? ' active' : '');
+    btn.dataset.unitId = u.id;
+    btn.innerHTML = `${u.name}<span class="count">${u.data.length} 题</span>`;
+    btn.addEventListener('click', () => {
+      selectedUnitId = u.id;
+      renderUnitButtons();
+    });
+    grid.appendChild(btn);
+  });
+}
 
 /* ============================================================
    音效开关
@@ -462,7 +529,11 @@ function shuffle(arr) {
    开始游戏
    ============================================================ */
 function startGame() {
-  currentQuestions = shuffle(UNIT1_QUESTIONS).slice(0, QUESTIONS_PER_ROUND);
+  if (!selectedUnitId) { alert('请先选择单元'); return; }
+  const unit = UNITS.find(u => u.id === selectedUnitId);
+  if (!unit) return;
+
+  currentQuestions = shuffle(unit.data).slice(0, QUESTIONS_PER_ROUND);
   currentIndex = 0;
   okCount = 0; noCount = 0;
   wrongRecords = [];
@@ -588,7 +659,6 @@ function handleAnswer(el, chosen) {
       blank.classList.add('filled');
     }
 
-    // 记录错题
     wrongRecords.push({
       sentence: q.sentence,
       answer: q.answer,
@@ -622,14 +692,11 @@ function endGame() {
   const done = okCount + noCount;
   const usedTime = TOTAL_TIME - Math.max(0, timeLeft);
 
-  // 评级
   let grade = 'C', title = '继续加油！', cheer = '多练几次会更好';
   if (okCount >= TIME_GRADE.S.minCorrect && usedTime <= TIME_GRADE.S.maxTime) {
     grade = 'S'; title = '超神！'; cheer = '又准又快，太厉害了！';
   } else if (okCount >= TIME_GRADE.A.minCorrect && usedTime <= TIME_GRADE.A.maxTime) {
     grade = 'A'; title = '很棒！'; cheer = '离 S 级只差一点点！';
-  } else {
-    grade = 'C'; title = '继续加油！'; cheer = '下次一定能更好';
   }
 
   document.getElementById('resultGrade').textContent = grade;
@@ -643,7 +710,6 @@ function endGame() {
     <div class="stat">完成<span class="val">${done}/${currentQuestions.length}</span></div>
   `;
 
-  // 错题回顾
   const wrongList = document.getElementById('wrongList');
   const wrongContent = document.getElementById('wrongListContent');
   if (wrongRecords.length > 0) {
@@ -694,6 +760,11 @@ document.addEventListener('keydown', (e) => {
     goNext();
   }
 });
+
+/* ============================================================
+   启动
+   ============================================================ */
+renderUnitButtons();
 </script>
 </body>
 </html>
