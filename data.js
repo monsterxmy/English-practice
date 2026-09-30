@@ -1,8 +1,7 @@
 /* ============================================================
    Unit 1 题库 · 六年级英语
    按 P1~P6 分组，每页每句全部覆盖
-   每题结构：
-   { page, emoji, sentence, hint, answer, options, full }
+   每题只挖 1 个空（避免多个空挤在一起）
    ============================================================ */
 
 const UNIT1_QUESTIONS = [
@@ -28,11 +27,19 @@ const UNIT1_QUESTIONS = [
   },
   {
     page: "P2", emoji: "📅",
-    sentence: "It ______ great! I ______ the Great Wall.",
-    hint: "be 动词过去式 + 攀登（过去式，词组）",
-    answer: "was climbed",
-    options: ["was climbed", "is climbed", "were climbed", "was climb"],
-    full: "It was great! I climbed the Great Wall."
+    sentence: "It ______ great!",
+    hint: "be 动词（过去式）",
+    answer: "was",
+    options: ["was", "were", "is", "are"],
+    full: "It was great!"
+  },
+  {
+    page: "P2", emoji: "🧱",
+    sentence: "I ______ the Great Wall.",
+    hint: "攀登（过去式）",
+    answer: "climbed",
+    options: ["climbed", "climb", "climbs", "climbing"],
+    full: "I climbed the Great Wall."
   },
   {
     page: "P2", emoji: "🧱",
@@ -158,11 +165,19 @@ const UNIT1_QUESTIONS = [
   },
   {
     page: "P3", emoji: "🗼",
-    sentence: "Liu Jia's family ______ to Paris and ______ the Eiffel Tower.",
-    hint: "旅行 + 参观（过去式）",
-    answer: "travelled visited",
-    options: ["travelled visited", "travel visit", "travels visits", "travelling visiting"],
-    full: "Liu Jia's family travelled to Paris and visited the Eiffel Tower."
+    sentence: "Liu Jia's family ______ to Paris.",
+    hint: "旅行（过去式）",
+    answer: "travelled",
+    options: ["travelled", "travel", "travels", "travelling"],
+    full: "Liu Jia's family travelled to Paris."
+  },
+  {
+    page: "P3", emoji: "🗼",
+    sentence: "Liu Jia's family visited ______ Eiffel Tower.",
+    hint: "定冠词（特指埃菲尔铁塔）",
+    answer: "the",
+    options: ["the", "a", "an", "/"],
+    full: "Liu Jia's family visited the Eiffel Tower."
   },
   {
     page: "P3", emoji: "🗼",
@@ -207,7 +222,7 @@ const UNIT1_QUESTIONS = [
   {
     page: "P3", emoji: "📍",
     sentence: "I visited a great place ______ Saturday.",
-    hint: "介词（在上周六）",
+    hint: "形容词（上一个）",
     answer: "last",
     options: ["last", "next", "this", "every"],
     full: "I visited a great place last Saturday."
@@ -256,11 +271,19 @@ const UNIT1_QUESTIONS = [
   },
   {
     page: "P4", emoji: "❤️",
-    sentence: "I ______ Xi'an. What ______ you do there?",
-    hint: "喜欢（一般现在时）+ 助动词",
-    answer: "like did",
-    options: ["like did", "liked did", "like do", "likes does"],
-    full: "I like Xi'an. What did you do there?"
+    sentence: "I ______ Xi'an.",
+    hint: "喜欢（一般现在时）",
+    answer: "like",
+    options: ["like", "liked", "likes", "liking"],
+    full: "I like Xi'an."
+  },
+  {
+    page: "P4", emoji: "❓",
+    sentence: "What ______ you do there?",
+    hint: "助动词（过去时疑问句）",
+    answer: "did",
+    options: ["did", "do", "does", "doing"],
+    full: "What did you do there?"
   },
   {
     page: "P4", emoji: "🍜",
@@ -280,11 +303,19 @@ const UNIT1_QUESTIONS = [
   },
   {
     page: "P4", emoji: "😮",
-    sentence: "Wow! I really ______ to go there! How ______ it?",
-    hint: "想要（一般现在时）+ be 动词过去式",
-    answer: "want was",
-    options: ["want was", "wanted was", "want were", "wants is"],
-    full: "Wow! I really want to go there! How was it?"
+    sentence: "Wow! I really ______ to go there!",
+    hint: "想要（一般现在时）",
+    answer: "want",
+    options: ["want", "wanted", "wants", "wanting"],
+    full: "Wow! I really want to go there!"
+  },
+  {
+    page: "P4", emoji: "😮",
+    sentence: "How ______ it?",
+    hint: "be 动词（过去式）",
+    answer: "was",
+    options: ["was", "were", "is", "are"],
+    full: "How was it?"
   },
   {
     page: "P4", emoji: "🐎",
@@ -296,19 +327,35 @@ const UNIT1_QUESTIONS = [
   },
   {
     page: "P4", emoji: "💻",
-    sentence: "I ______ pictures on the internet. What else ______ you do?",
-    hint: "看见（过去式）+ 助动词",
-    answer: "saw did",
-    options: ["saw did", "see did", "saw do", "sees does"],
-    full: "I saw pictures on the internet. What else did you do?"
+    sentence: "I ______ pictures on the internet.",
+    hint: "看见（过去式）",
+    answer: "saw",
+    options: ["saw", "see", "sees", "seeing"],
+    full: "I saw pictures on the internet."
+  },
+  {
+    page: "P4", emoji: "❓",
+    sentence: "What else ______ you do?",
+    hint: "助动词（过去时疑问句）",
+    answer: "did",
+    options: ["did", "do", "does", "doing"],
+    full: "What else did you do?"
   },
   {
     page: "P4", emoji: "🚴",
-    sentence: "We ______ around the old city and ______ bikes.",
-    hint: "走 + 骑（过去式）",
-    answer: "walked rode",
-    options: ["walked rode", "walk ride", "walks rides", "walking riding"],
-    full: "We walked around the old city and rode bikes."
+    sentence: "We ______ around the old city.",
+    hint: "走（过去式）",
+    answer: "walked",
+    options: ["walked", "walk", "walks", "walking"],
+    full: "We walked around the old city."
+  },
+  {
+    page: "P4", emoji: "🚴",
+    sentence: "We rode ______ on the old city wall.",
+    hint: "自行车（复数）",
+    answer: "bikes",
+    options: ["bikes", "bike", "bicycle", "cars"],
+    full: "We rode bikes on the old city wall."
   },
   {
     page: "P4", emoji: "😄",
@@ -410,11 +457,19 @@ const UNIT1_QUESTIONS = [
   },
   {
     page: "P5", emoji: "🍜",
-    sentence: "I ______ to Wuhan. I ______ hot dry noodles.",
-    hint: "去 + 吃（过去式）",
-    answer: "went ate",
-    options: ["went ate", "go eat", "goes eats", "going eating"],
-    full: "I went to Wuhan. I ate hot dry noodles."
+    sentence: "I ______ to Wuhan.",
+    hint: "去（过去式）",
+    answer: "went",
+    options: ["went", "go", "goes", "going"],
+    full: "I went to Wuhan."
+  },
+  {
+    page: "P5", emoji: "🍜",
+    sentence: "I ______ hot dry noodles.",
+    hint: "吃（过去式）",
+    answer: "ate",
+    options: ["ate", "eat", "eats", "eating"],
+    full: "I ate hot dry noodles."
   },
   {
     page: "P5", emoji: "🌳",
@@ -434,11 +489,19 @@ const UNIT1_QUESTIONS = [
   },
   {
     page: "P5", emoji: "🦆",
-    sentence: "We ______ many ducks and ______ fresh fruit there.",
-    hint: "看见 + 吃（过去式）",
-    answer: "saw ate",
-    options: ["saw ate", "see eat", "sees eats", "seeing eating"],
-    full: "We saw many ducks and ate fresh fruit there."
+    sentence: "We ______ many ducks and fresh fruit there.",
+    hint: "看见（过去式）",
+    answer: "saw",
+    options: ["saw", "see", "sees", "seeing"],
+    full: "We saw many ducks and fresh fruit there."
+  },
+  {
+    page: "P5", emoji: "🍎",
+    sentence: "We ate fresh ______ there.",
+    hint: "水果",
+    answer: "fruit",
+    options: ["fruit", "food", "rice", "noodles"],
+    full: "We ate fresh fruit there."
   },
 
   /* ============ P6 · Read and write ============ */
@@ -452,11 +515,19 @@ const UNIT1_QUESTIONS = [
   },
   {
     page: "P6", emoji: "📚",
-    sentence: "I ______ around the museum for hours and ______ many old books and photos.",
-    hint: "走 + 看见（过去式）",
-    answer: "walked saw",
-    options: ["walked saw", "walk see", "walks sees", "walking seeing"],
-    full: "I walked around the museum for hours and saw many old books and photos."
+    sentence: "I ______ around the museum for hours.",
+    hint: "走（过去式）",
+    answer: "walked",
+    options: ["walked", "walk", "walks", "walking"],
+    full: "I walked around the museum for hours."
+  },
+  {
+    page: "P6", emoji: "📚",
+    sentence: "I saw many old ______ and photos.",
+    hint: "书（复数）",
+    answer: "books",
+    options: ["books", "book", "notebooks", "cards"],
+    full: "I saw many old books and photos."
   },
   {
     page: "P6", emoji: "🎖️",
@@ -508,11 +579,19 @@ const UNIT1_QUESTIONS = [
   },
   {
     page: "P6", emoji: "⛰️",
-    sentence: "We ______ the Jinggang Mountains and ______ many photos.",
-    hint: "攀登 + 拍摄（过去式）",
-    answer: "climbed took",
-    options: ["climbed took", "climb take", "climbs takes", "climbing taking"],
-    full: "We climbed the Jinggang Mountains and took many photos."
+    sentence: "We ______ the Jinggang Mountains.",
+    hint: "攀登（过去式）",
+    answer: "climbed",
+    options: ["climbed", "climb", "climbs", "climbing"],
+    full: "We climbed the Jinggang Mountains."
+  },
+  {
+    page: "P6", emoji: "📷",
+    sentence: "We took many ______ there.",
+    hint: "照片（复数）",
+    answer: "photos",
+    options: ["photos", "photo", "pictures", "books"],
+    full: "We took many photos there."
   },
   {
     page: "P6", emoji: "🎋",
@@ -554,5 +633,5 @@ const UNIT1_QUESTIONS = [
 const TIME_GRADE = {
   S: { maxTime: 40, minCorrect: 8 },
   A: { maxTime: 55, minCorrect: 6 },
-  C: { }  // 其余情况
+  C: { }
 };
