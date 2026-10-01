@@ -481,9 +481,12 @@ if (window.speechSynthesis) {
   loadVoices();
   window.speechSynthesis.onvoiceschanged = loadVoices;
 }
-function speakSentence(text) {
-  if (!soundEnabled) return;
-  if (!window.speechSynthesis) return;
+
+function speakSentence(text, onEnd) {
+  if (!soundEnabled || !window.speechSynthesis) {
+    if (onEnd) setTimeout(onEnd, 1500);
+    return;
+  }
   window.speechSynthesis.cancel();
   setTimeout(() => {
     const u = new SpeechSynthesisUtterance(text);
@@ -496,6 +499,21 @@ function speakSentence(text) {
       if (v.lang.startsWith('en') && !chosen) chosen = v;
     }
     if (chosen) u.voice = chosen;
+
+    if (onEnd) {
+      let done = false;
+      u.onend = () => {
+        if (!done) { done = true; onEnd(); }
+      };
+      u.onerror = () => {
+        if (!done) { done = true; onEnd(); }
+      };
+      // 兜底：最多等 5 秒
+      setTimeout(() => {
+        if (!done) { done = true; onEnd(); }
+      }, 5000);
+    }
+
     window.speechSynthesis.speak(u);
   }, 80);
 }
@@ -632,16 +650,18 @@ function handleAnswer(el, chosen) {
       blank.classList.add('filled');
     }
 
-    const tip = document.getElementById('feedbackTip');
+ const tip = document.getElementById('feedbackTip');
     tip.textContent = '✅ 答对啦！' + (soundEnabled ? ' 🔊 正在朗读…' : '');
     tip.className = 'feedback-tip ok';
 
-    speakSentence(q.full);
-
-    autoNextTimer = setTimeout(() => {
-      currentIndex++;
-      renderQuestion();
-    }, 1200);
+    // 朗读结束后再跳下一题
+    const goNextAfterSpeak = () => {
+      autoNextTimer = setTimeout(() => {
+        currentIndex++;
+        renderQuestion();
+      }, 800);
+    };
+    speakSentence(q.full, goNextAfterSpeak);
 
   } else {
     el.classList.add('wrong');
