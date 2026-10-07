@@ -1771,6 +1771,265 @@ const UNIT3_QUESTIONS = [
     options: ["joined", "join", "joins", "joining"],
     full: "I also joined a ping-pong club and made some new friends."
   }
+];/* ============================================================
+   Unit 4 题库 · 六年级英语
+   Why do we use money? / How can we use money wisely?
+   （一句两空版本 · 第 1 段：P40 + P41）
+   ============================================================ */
+
+const UNIT4_QUESTIONS = [
+
+  /* ============ P40 · A. Let's talk（零花钱） ============ */
+  {
+    page: "P40", emoji: "💰",
+    sentence: "Mike: Are you ______ your pocket money, Matt?",
+    hint: "数（现在进行时）",
+    answer: "counting",
+    options: ["counting", "count", "counted", "counts"],
+    full: "Are you counting your pocket money, Matt?"
+  },
+  {
+    page: "P40", emoji: "💰",
+    sentence: "Matt: Yes. I have three hundred and ______ yuan.",
+    hint: "数字（57）",
+    answer: "fifty-seven",
+    options: ["fifty-seven", "fifty-six", "forty-seven", "seventy-five"],
+    full: "Yes. I have three hundred and fifty-seven yuan."
+  },
+  {
+    page: "P40", emoji: "😲",
+    sentence: "Mike: Wow, that's ______ lot!",
+    hint: "冠词（a lot 表示很多）",
+    answer: "a",
+    options: ["a", "the", "an", "/"],
+    full: "Wow, that's a lot!"
+  },
+  {
+    page: "P40", emoji: "🤔",
+    sentence: "How are you going to ______ it?",
+    hint: "花费（动词原形）",
+    answer: "spend",
+    options: ["spend", "spent", "spends", "spending"],
+    full: "How are you going to spend it?"
+  },
+  {
+    page: "P40", emoji: "🎒",
+    sentence: "I'm going to buy a ______.",
+    hint: "书包",
+    answer: "schoolbag",
+    options: ["schoolbag", "book", "pencil", "ruler"],
+    full: "I'm going to buy a schoolbag."
+  },
+  {
+    page: "P40", emoji: "👍",
+    sentence: "Yes, you need a ______ one.",
+    hint: "新的（形容词）",
+    answer: "new",
+    options: ["new", "old", "big", "small"],
+    full: "Yes, you need a new one."
+  },
+  {
+    page: "P40", emoji: "📚",
+    sentence: "I also want to buy some ______ books.",
+    hint: "动物的（形容词）",
+    answer: "animal",
+    options: ["animal", "science", "story", "picture"],
+    full: "I also want to buy some animal books."
+  },
+  {
+    page: "P40", emoji: "🤩",
+    sentence: "Nice. They're ______.",
+    hint: "有趣的（形容词）",
+    answer: "interesting",
+    options: ["interesting", "interested", "boring", "funny"],
+    full: "Nice. They're interesting."
+  },
+  {
+    page: "P40", emoji: "🍦",
+    sentence: "Maybe I can also buy some ______ cream.",
+    hint: "冰（ice cream）",
+    answer: "ice",
+    options: ["ice", "cream", "milk", "juice"],
+    full: "Maybe I can also buy some ice cream."
+  },
+  {
+    page: "P40", emoji: "😋",
+    sentence: "Sure, but ______ eat too much.",
+    hint: "不要（祈使句否定）",
+    answer: "don't",
+    options: ["don't", "doesn't", "didn't", "won't"],
+    full: "Sure, but don't eat too much."
+  },
+  {
+    page: "P40", emoji: "😌",
+    sentence: "Don't worry. I ______.",
+    hint: "不会（won't = will not）",
+    answer: "won't",
+    options: ["won't", "can't", "don't", "didn't"],
+    full: "Don't worry. I won't."
+  },
+  {
+    page: "P40", emoji: "❓",
+    sentence: "How ______ pocket money does Matt have?",
+    hint: "多少（修饰不可数名词）",
+    answer: "much",
+    options: ["much", "many", "more", "most"],
+    full: "How much pocket money does Matt have?"
+  },
+  {
+    page: "P40", emoji: "💸",
+    sentence: "How is he going to ______ his pocket money?",
+    hint: "花费（动词原形）",
+    answer: "spend",
+    options: ["spend", "spent", "spends", "spending"],
+    full: "How is he going to spend his pocket money?"
+  },
+  {
+    page: "P40", emoji: "📋",
+    sentence: "I'm going to buy ... And I also ______ to buy ...",
+    hint: "想要（动词原形）",
+    answer: "want",
+    options: ["want", "wants", "wanted", "wanting"],
+    full: "I'm going to buy ... And I also want to buy ..."
+  },
+  {
+    page: "P40", emoji: "💸",
+    sentence: "She is going to ______ ...",
+    hint: "买（动词原形）",
+    answer: "buy",
+    options: ["buy", "bought", "buys", "buying"],
+    full: "She is going to buy ..."
+  },
+  {
+    page: "P40", emoji: "💸",
+    sentence: "She ______ to buy ...",
+    hint: "想要（第三人称单数）",
+    answer: "wants",
+    options: ["wants", "want", "wanted", "wanting"],
+    full: "She wants to buy ..."
+  },
+
+  /* ============ P41 · A. Let's learn（钱买什么） ============ */
+  {
+    page: "P41", emoji: "🛒",
+    sentence: "People use money to do different ______.",
+    hint: "事情（复数）",
+    answer: "things",
+    options: ["things", "thing", "something", "everything"],
+    full: "People use money to do different things."
+  },
+  {
+    page: "P41", emoji: "💰",
+    sentence: "We use ______ to buy goods.",
+    hint: "钱",
+    answer: "money",
+    options: ["money", "time", "water", "food"],
+    full: "We use money to buy goods."
+  },
+  {
+    page: "P41", emoji: "🛒",
+    sentence: "We use money to buy ______.",
+    hint: "商品（复数）",
+    answer: "goods",
+    options: ["goods", "books", "food", "clothes"],
+    full: "We use money to buy goods."
+  },
+  {
+    page: "P41", emoji: "🥤",
+    sentence: "We buy food and ______.",
+    hint: " "We饮料",
+    answer: " buydrink",
+    options: ["dr foodink", "milk", "water", " andjuice"],
+    drink full:."
+  },
+  {
+    page: "P41", emoji: "👕",
+    sentence: "We buy clothes and ______ things.",
+    hint: "学校（名词作定语）",
+    answer: "school",
+    options: ["school", "home", "shop", "class"],
+    full: "We buy clothes and school things."
+  },
+  {
+    page: "P41", emoji: "🛎️",
+    sentence: "We use money to ______ for services.",
+    hint: "支付（pay for）",
+    answer: "pay",
+    options: ["pay", "paid", "pays", "paying"],
+    full: "We use money to pay for services."
+  },
+  {
+    page: "P41", emoji: "🛎️",
+    sentence: "We need ______ services.",
+    hint: "不同的（形容词）",
+    answer: "different",
+    options: ["different", "same", "many", "some"],
+    full: "We need different services."
+  },
+  {
+    page: "P41", emoji: "💇",
+    sentence: "We need different services: ______, home deliveries, ...",
+    hint: "理发（复数）",
+    answer: "haircuts",
+    options: ["haircuts", "hair", "cut", "cuts"],
+    full: "We need different services: haircuts, home deliveries, ..."
+  },
+  {
+    page: "P41", emoji: "💇",
+    sentence: "Chen Jie: How are you going to ______ your pocket money?",
+    hint: "花费（动词原形）",
+    answer: "spend",
+    options: ["spend", "spent", "spends", "spending"],
+    full: "How are you going to spend your pocket money?"
+  },
+  {
+    page: "P41", emoji: "💇",
+    sentence: "Amy: I'm going to have a ______, ...",
+    hint: "理发",
+    answer: "haircut",
+    options: ["haircut", "hair", "cut", "rest"],
+    full: "I'm going to have a haircut, ..."
+  },
+  {
+    page: "P41", emoji: "📊",
+    sentence: "How ______ you spend your money?",
+    hint: "助动词（一般现在时）",
+    answer: "do",
+    options: ["do", "did", "does", "doing"],
+    full: "How do you spend your money?"
+  },
+  {
+    page: "P41", emoji: "🛒",
+    sentence: "We use money to buy goods. We ______ ...",
+    hint: "买（动词原形）",
+    answer: "buy",
+    options: ["buy", "bought", "buys", "buying"],
+    full: "We use money to buy goods. We buy ..."
+  },
+  {
+    page: "P41", emoji: "🛎️",
+    sentence: "We use money to pay for services. We ______ a doctor, ...",
+    hint: "看（see a doctor）",
+    answer: "see",
+    options: ["see", "saw", "sees", "seeing"],
+    full: "We use money to pay for services. We see a doctor, ..."
+  },
+  {
+    page: "P41", emoji: "🏊",
+    sentence: "We can go ______ / go to a dance class.",
+    hint: "游泳（go swimming）",
+    answer: "swimming",
+    options: ["swimming", "swim", "swam", "swims"],
+    full: "We can go swimming / go to a dance class."
+  },
+  {
+    page: "P41", emoji: "🎬",
+    sentence: "We can go to the ______.",
+    hint: "电影院",
+    answer: "cinema",
+    options: ["cinema", "park", "shop", "library"],
+    full: "We can go to the cinema."
+  }
 ];
 const TIME_GRADE = {
   S: { maxTime: 40, minCorrect: 8 },
